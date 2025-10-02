@@ -1,0 +1,38 @@
+/* auth.css : 로그인/회원가입 전용 스타일 */
+
+.auth-container {
+    max-width: 480px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.auth-container h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.auth-container .form-control {
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 12px;
+}
+
+.auth-container .btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.auth-container .btn-link {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+}

@@ -2,23 +2,27 @@
 {% block content %}
 
 {# 코드 작성은 이선 이후로 작성 바람#}
-<div class="container">
-    <h5 class="my-3 border-bottom pb-2">로그인</h5>
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+
+<div class="auth-container">
+    <h2>로그인</h2>
     <form method="post">
-        {% include 'form_errors.html' %}
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+
         <div class="mb-3">
-            <label for="userid">아이디</label>
-            <input type="text" name="userid" id="userid" class="form-control" value="{{form.userid.data or ''}}">
+            {{ form.userid.label(class="form-label") }}
+            {{ form.userid(class="form-control", placeholder="아이디") }}
         </div>
+
         <div class="mb-3">
-            <label for="password">비밀번호</label>
-            <input type="password" name="password" id="password" class="form-control" value="{{form.password.data or ''}}">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", placeholder="비밀번호") }}
         </div>
-        <button type="submit" class="btn btn-primary">로그인</button>
+
+        <button type="submit" class="btn btn-success">로그인</button>
+        <a href="{{ url_for('auth.signup') }}" class="btn btn-link">계정이 없으신가요? 회원가입</a>
     </form>
 </div>
-
-
 {% endblock %}
-
 

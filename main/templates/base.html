@@ -40,26 +40,11 @@
                 <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
                 <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
                 {% endif %}
-                <li><a href="">고객지원</a></li>
+                <li><a href="{{ url_for('member.support') }}">고객지원</a></li>
             </ul>
         </div>
     </header>
 <!--네비게이션-->
-
-        <ul class="nav">
-    {% if g.user %}
-        <!-- 로그인 상태 -->
-        <li><a href="{{ url_for('member.mypage') }}">마이페이지</a></li>
-        <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
-    {% else %}
-        <!-- 비로그인 상태 -->
-        <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
-        <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
-    {% endif %}
-    <li><a href="{{ url_for('member.support') }}">고객지원</a></li>
-</ul>
-
-
 
 <!--    기본 템플릿 안에 삽입될 내용 start-->
 {% block content %}
