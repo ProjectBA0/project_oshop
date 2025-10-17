@@ -1,0 +1,243 @@
+//-------------------------------------------------------------------------
+// 맨 위로 올라가는 스크롤 버튼 - JS
+//-------------------------------------------------------------------------
+
+window.addEventListener("scroll", () => {
+    const btn = document.getElementById("back-to-top");
+    if (window.scrollY > 100) {
+        btn.classList.add("visible");
+    } else {
+        btn.classList.remove("visible");
+    }
+    });
+
+    // 버튼 클릭하면 맨 위로 부드럽게 이동.
+    document.getElementById("back-to-top").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    });
+
+
+
+/* --------------------------------------------------------------- */
+/* Main Slider */
+/* --------------------------------------------------------------- */
+const swiper1 = new Swiper(".mySwiper1", {
+    loop: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1",
+    },
+    allowTouchMove: false,
+});
+
+
+/* --------------------------------------------------------------- */
+/* 추석 이벤트 상품 */
+/* --------------------------------------------------------------- */
+var swiper2 = new Swiper(".mySwiper2", {
+        loop:true,
+      navigation: {
+            nextEl: ".swiper-button-next2",
+            prevEl: ".swiper-button-prev2",
+        },
+      breakpoints: {
+        1024: {
+        slidesPerView: 4,
+        spaceBetween: 35,
+        },
+      },
+      allowTouchMove: false,
+    });
+
+/* --------------------------------------------------------------- */
+/* 옷 카테고리 */
+/* --------------------------------------------------------------- */
+    var swiper3 = new Swiper(".mySwiper3", {
+      loop: true,
+      slidesPerView: 3,
+      grid: {
+        rows: 2,
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      spaceBetween: 40,
+    });
+
+   const swiperInner = new Swiper('.mySwiperInner', {
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    effect: 'fade',
+  });
+
+
+/* --------------------------------------------------------------- */
+/* 쿠폰 / 이벤트 Slider */
+/* --------------------------------------------------------------- */
+var swiper = new Swiper(".mySwiper4", {
+      loop: true,
+      effect: "flip",
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next4",
+        prevEl: ".swiper-button-prev4",
+      },
+    });
+
+
+
+
+
+/* --------------------------------------------------------------- */
+/* 패션소품 카테고리 */
+/* --------------------------------------------------------------- */
+var swiper5 = new Swiper(".mySwiper5", {
+      loop: true,
+      slidesPerView: 3,
+      grid: {
+        rows: 2,
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      spaceBetween: 40,
+      navigation: {
+          nextEl: ".swiper-button-next5",
+          prevEl: ".swiper-button-prev5",
+      },
+    });
+
+   const swiperInner1 = new Swiper('.mySwiperInner1', {
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    effect: 'fade',
+  });
+
+
+
+
+
+/* --------------------------------------------------------------- */
+/* 잡화 카테고리 */
+/* --------------------------------------------------------------- */
+var swiper6 = new Swiper(".mySwiper6", {
+      loop: true,
+      slidesPerView: 3,
+      grid: {
+        rows: 2,
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      spaceBetween: 40,
+      navigation: {
+          nextEl: ".swiper-button-next6",
+          prevEl: ".swiper-button-prev6",
+      },
+    });
+
+   const swiperInner2 = new Swiper('.mySwiperInner2', {
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    effect: 'fade',
+  });
+
+   // window.addEventListener("scroll", () => {
+   //  const btn = document.getElementById("Slider2");
+   //  if (window.scrollY > 100) {
+   //      btn.classList.add("visible");
+   //  } else {
+   //      btn.classList.remove("visible");
+   //  }
+   //  });
+
+    // 버튼 클릭하면 맨 위로 부드럽게 이동. 이벤트
+document.getElementById("eventicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("Slider2");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+});
+
+// 의류
+document.getElementById("clothingicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("clothing");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
+
+// 장신구
+document.getElementById("accessoryicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("accessory");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
+
+// 잡화
+document.getElementById("miscicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("misc");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
+
+// 리뷰
+document.getElementById("qnaicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("qna");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 50;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})

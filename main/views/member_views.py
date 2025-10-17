@@ -4,34 +4,46 @@ from werkzeug.utils import secure_filename
 
 from main import db
 # User 모델을 임포트해야 함
-from main.models import User
+from main.models import User, Product
 from main.forms import UserCreateForm
 
 bp = Blueprint('member', __name__, url_prefix='/member')
 
+
 @bp.route('/mypage', methods=['GET', 'POST'])
 def mypage():
     form = UserCreateForm()
+    page = request.args.get('page', default=1, type=int)  # 페이지
+    if g.user.admin:
+        product_list = Product.query.order_by(Product.create_date.desc()) \
+            .paginate(page=page, per_page=5)
+    else:
+        product_list = Product.query \
+            .filter_by(user_id=g.user.id) \
+            .order_by(Product.create_date.desc()) \
+            .paginate(page=page, per_page=5)
+
     if request.method == 'POST':
-        form_image = form.image.data
+        formimage = form.image.data
         image = 'user_img/default.jpg'
-        if form_image:
+        if formimage:
             upload_folder = os.path.join(current_app.root_path, 'static/user_img', str(g.user.id))
-
             os.makedirs(upload_folder, exist_ok=True)
+            if g.user.image and g.user.image != 'user_img/default.jpg':
+                existing_image_path = os.path.join(current_app.root_path, 'static', g.user.image)
+                if os.path.exists(existing_image_path):
+                    os.remove(existing_image_path)
 
-            filename = secure_filename(form_image.filename)
+            filename = secure_filename(formimage.filename)
             file_path = os.path.join(upload_folder, filename)
-            form_image.save(file_path)
-
+            formimage.save(file_path)
 
             g.user.image = f'user_img/{g.user.id}/{filename}'
             db.session.commit()
+        return redirect(url_for('member.mypage'))
 
-        return redirect(url_for('member.mypage',))
+    return render_template('member/mypage.html', user=g.user, form=form, page=page, product_list=product_list)
 
-
-    return render_template('member/mypage.html', user=g.user, form=form)
 
 @bp.route('/create', methods=['GET'])
 def create():
